@@ -178,6 +178,26 @@ wiz1.castSpell()
 
 //Code Here
 
+class Phone {
+  constructor(brand, model, storage, color, price) {
+    this.brand = brand;
+    this.model = model;
+    this.storage = storage;
+    this.color = color;
+    this.price = price;
+    this.sold = false;
+  }
+
+  sell() {
+    this.sold = true
+    console.log(`${this.brand} ${this.model} has been sold.`)
+  }
+
+  changePrice(newPrice) {
+    this.price = newPrice
+  }
+}
+
   
 /*
     Next make three new phone instances using your class.
@@ -190,6 +210,9 @@ wiz1.castSpell()
 */
 
 //Code Here
+let phone1 = new Phone("Apple", "iPhone 12", 128, "Space Gray", 1200)
+let phone2 = new Phone("Google", "Pixel 4", 256, "Black", 600)
+let phone3 = new Phone("Apple", "iPhone X", 256, "Silver", 800)
 
 /* 
   Call the changePrice function on one of your phones, 
@@ -199,7 +222,8 @@ wiz1.castSpell()
 */ 
 
 //Code Here 
-
+phone3.changePrice(700)
+console.log(phone3.price)
 
 /*
   Now call the sell method on one of your other phone objects
@@ -208,7 +232,8 @@ wiz1.castSpell()
 */
 
 //Code Here 
-
+phone1.sell()
+console.log(phone1.sold)
 
 //////////////////////////// PROBLEM 11 ////////////////////////////
 
@@ -227,7 +252,7 @@ const colors = {
 //do not edit this object
 
 //Code Here 
-
+let colorsCopy = {...colors};
 
 
 /*
@@ -255,7 +280,11 @@ const shippingInfo = {
 //do not edit the objects above
 
 //Code Here
-
+let helensInfo = {
+  ...contactInfo,
+  ...shippingInfo
+}
+console.log(helensInfo)
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
 
@@ -273,14 +302,25 @@ const shippingInfo = {
 */
 
 //Code Here 
+class Vehicle {
+  constructor(capacity, color, mileage) {
+    this.capacity = capacity;
+    this.color = color;
+    this.mileage = mileage;
+  }
 
+  move(miles) {
+    this.mileage += miles
+    console.log(this.mileage)
+  }
+}
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
-
+let myFirstVehicle = new Vehicle(5, "gold", 223500)
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -292,17 +332,25 @@ const shippingInfo = {
 */
 
 //Code Here
+class Motorcycle extends Vehicle {
+  constructor(capacity, color, mileage, make, isCool) {
+    super(capacity, color, mileage)
+    this.make = make;
+    this.isCool = isCool;
+  }
+}
 
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
+let myFirstMotorcycle = new Motorcycle(2, "black", 12000, "Suzuki", true)
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
-
+myFirstMotorcycle.move(500)
 /*
   Let's make another class based off of Vehicle. 
 
@@ -319,7 +367,27 @@ const shippingInfo = {
 */
 
 //Code Here
+class Boat extends Vehicle {
+  constructor(capacity, color, mileage, name, type, isSeaworthy) {
+    super(capacity, color, mileage);
+    this.name = name;
+    this.type = type;
+    this.isSeaworthy = isSeaworthy;
+  }
 
+  checkSeaworthiness() {
+    if (this.isSeaworthy) {
+      console.log(`The ${this.color} ${this.type} ${this.name} is seaworthy!`)
+    } 
+    else {
+      console.log(`You need to get your ${this.type} in shape!`)
+    }
+  }
+
+  performMaintenance() {
+    this.isSeaworthy = true
+  }
+}
 
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
@@ -327,21 +395,23 @@ const shippingInfo = {
 */
 
 //Code Here
-
+let myFirstBoat = new Boat(8, "black", 5000, "Shelly", "Pirate Ship", false)
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness()
 
 /*
   Now run the performMaintenance method on your boat
 */
 
 //Code Here 
-
+myFirstBoat.performMaintenance()
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness()
